@@ -1,6 +1,10 @@
 pipeline {
     agent any
+    environment {
+        PATH = "/opt/maven/bin:$PATH"
+        DOCKERHUB_CREDENTIALS = credentials('docker-hub-credential')
 
+    } 
     stages {
         stage('git_clone') {
             steps {
