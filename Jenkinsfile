@@ -32,6 +32,12 @@ pipeline {
                 sh 'docker push devopssteps/java-1:latest'
             }
         }
+        stage('Debug kubectl') {
+            steps {
+                sh 'kubectl config view'
+                sh 'kubectl get nodes'
+            }
+        }
         //k8s steps add
         stage('deploy to kubernetes') {
             steps {
