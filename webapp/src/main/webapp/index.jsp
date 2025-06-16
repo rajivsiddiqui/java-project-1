@@ -1,2 +1,2 @@
-    <h1>Welcome to CICD turorial 1</h1>
+    <h1>Welcome to CICD turorial 2</h1>
      
