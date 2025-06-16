@@ -36,11 +36,11 @@ pipeline {
         stage('Prepare kubeconfig') {
             steps {
                 sh '''
-                cp /home/rajiv/.kube/config $KUBECONFIG
-                chmod 600 $KUBECONFIG
+                sudo cp /home/rajiv/.kube/config $KUBECONFIG
+                sudo chmod 600 $KUBECONFIG
                 # Update paths inside the config to match workspace
                 sed -i 's|/home/rajiv/.minikube|'"$WORKSPACE"'/minikube|g' $KUBECONFIG
-                cp -r /home/rajiv/.minikube $WORKSPACE/minikube
+                sudo cp -r /home/rajiv/.minikube $WORKSPACE/minikube
                 '''
             }
         }
