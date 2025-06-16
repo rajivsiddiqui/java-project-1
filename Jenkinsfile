@@ -3,6 +3,7 @@ pipeline {
     environment {
         PATH = "/opt/maven/bin:$PATH"
         DOCKERHUB_CREDENTIALS = credentials('docker-hub-credential')
+        KUBECONFIG = credentials('kubeconfig-cred')
 
     } 
     stages {
@@ -34,10 +35,8 @@ pipeline {
         //k8s steps add
         stage('deploy to kubernetes') {
             steps {
-                script {
-                    sh './k8s/deploy.sh'
-                    sh 'kubectl rollout restart deployment.apps/myapp-deployment' // this force to deployment with the new docker image
-                }
+                withCredentials([file(credentialsId: 'kubeconfig-cred', variable: 'KUBECONFIG')]) {
+                    sh 'chmod +x ./k8s/deploy.sh && ./k8s/deploy.sh'
             }
         }
     }
