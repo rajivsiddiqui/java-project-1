@@ -37,6 +37,7 @@ pipeline {
             steps {
                 withCredentials([file(credentialsId: 'kubeconfig-cred', variable: 'KUBECONFIG')]) {
                     sh 'chmod +x ./k8s/deploy.sh && ./k8s/deploy.sh'
+               }
             }
         }
     }
