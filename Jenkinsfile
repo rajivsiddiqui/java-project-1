@@ -3,7 +3,7 @@ pipeline {
     environment {
         PATH = "/opt/maven/bin:$PATH"
         DOCKERHUB_CREDENTIALS = credentials('docker-hub-credential')
-        KUBECONFIG = credentials('kubeconfig-cred')
+        //KUBECONFIG = credentials('kubeconfig-cred')
         KUBECONFIG = "${WORKSPACE}/kubeconfig"
 
     } 
