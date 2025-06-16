@@ -4,8 +4,8 @@ pipeline {
         PATH = "/opt/maven/bin:$PATH"
         DOCKERHUB_CREDENTIALS = credentials('docker-hub-credential')
         //KUBECONFIG = credentials('kubeconfig-cred')
-        KUBECONFIG = "${WORKSPACE}/kubeconfig"
-
+        //KUBECONFIG = "${WORKSPACE}/kubeconfig"
+        KUBECONFIG = "/var/lib/jenkins/kubeconfig"
     } 
     stages {
         stage('git_clone') {
