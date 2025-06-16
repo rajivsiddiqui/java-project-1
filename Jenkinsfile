@@ -24,5 +24,12 @@ pipeline {
                 sh 'docker build -t devopssteps/java-1:latest .'
             }
         }
+        //docker login and push docker image
+        stage('Login to dockerhub and push the image') {
+            steps {
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'docker push devopssteps/myapp:latest'
+            }
+        }
     }
 }
