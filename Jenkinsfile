@@ -5,7 +5,9 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('docker-hub-credential')
         //KUBECONFIG = credentials('kubeconfig-cred')
         //KUBECONFIG = "${WORKSPACE}/kubeconfig"
-        KUBECONFIG = "/var/lib/jenkins/kubeconfig"
+        //KUBECONFIG = "/var/lib/jenkins/kubeconfig"
+        KUBECONFIG = "/var/lib/jenkins/kube-minikube/config"
+        MINIKUBE_HOME = "/var/lib/jenkins/kube-minikube/.minikube"
     } 
     stages {
         stage('git_clone') {
