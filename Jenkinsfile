@@ -18,5 +18,11 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
+        //docker image create
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t devopssteps/java-1:latest .'
+            }
+        }
     }
 }
